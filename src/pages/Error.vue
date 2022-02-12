@@ -20,6 +20,10 @@ export default {
 <style scoped>
 .container {
     width: 100%;
-    text-align: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
 }
 </style>

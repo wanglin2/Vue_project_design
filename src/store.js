@@ -10,7 +10,11 @@ export default new Vuex.Store({
     actions: {
         async getUserInfo(ctx) {
             let userInfo = {
-                code: ['1'] // 用户拥有的权限
+                code: ['001'], // 用户拥有的权限
+                breadcrumb: {// 面包屑数据
+                    '001': ['breadcrumb.hello'],
+                },
+                language: 'zh_CN'// 默认语言
             }
             ctx.commit('setUserInfo', userInfo)
         }

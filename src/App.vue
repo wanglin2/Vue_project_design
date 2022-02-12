@@ -11,22 +11,50 @@
         :index="item.router"
       >
         <i :class="item.icon"></i>
-        <span slot="title">{{ item.title }}</span>
+        <span slot="title">{{ $t(item.title) }}</span>
       </el-menu-item>
     </el-menu>
     <router-view />
+    <div class="langSelectBox">
+      <el-select size="small" v-model="lang" @change="langChange">
+        <el-option
+          v-for="item in langList"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        >
+        </el-option>
+      </el-select>
+    </div>
   </div>
 </template>
 
 <script>
 import navList from './nav.config.js'
+import { mapState } from 'vuex'
+import { setLanguage } from './utils'
 
 export default {
   name: 'App',
   data() {
-    return {}
+    return {
+      langList: [
+        {
+          label: '中文',
+          value: 'zh_CN',
+        },
+        {
+          label: 'English',
+          value: 'en_US',
+        },
+      ],
+      lang: '',
+    }
   },
   computed: {
+    ...mapState({
+      language: (state) => state.userInfo.language,
+    }),
     navList() {
       const { userInfo } = this.$store.state
       if (!userInfo || !userInfo.code || userInfo.code.length <= 0) return []
@@ -47,6 +75,14 @@ export default {
         })
       }
       return fullMatch ? fullMatch.router : ''
+    },
+  },
+  created() {
+    this.lang = this.language
+  },
+  methods: {
+    langChange() {
+      setLanguage(this.lang)
     },
   },
 }
@@ -71,5 +107,12 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
+}
+
+.langSelectBox {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  width: 100px;
 }
 </style>

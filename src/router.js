@@ -18,6 +18,12 @@ const createRoute = (routes) => {
             children: createRoute(item.children),
             meta: {
                 code: item.code
+            },
+            props: {
+                breadcrumbObj: {
+                    breadcrumb: item.breadcrumb,
+                    code: item.code
+                } 
             }
         }
     })
