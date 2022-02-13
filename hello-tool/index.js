@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 const path = require('path')
 const {
     program
@@ -28,15 +29,17 @@ const buildI18n = () => {
     let srcDir = path.join(process.cwd(), 'src/i18n')
     // 目标目录
     let destDir = path.join(process.cwd(), 'public/i18n')
-    // 1.清空目标目录
+    // 1.清空目标目录，clearDir是一个自定义方法，递归遍历目录进行删除
     clearDir(destDir)
     // 2.获取源多语言导出数据
     let data = {}
     let langDirs = fs.readdirSync(srcDir)
     langDirs.forEach((dir) => {
         let dirPath = path.join(srcDir, dir)
+        // 读取/src/i18n/xxx/index.js文件，获取导出的多语言对象，存储到data对象上
         let indexPath = path.join(dirPath, 'index.js')
         if (fs.statSync(dirPath).isDirectory() && fs.existsSync(indexPath)) {
+            // 使用require加载该文件模块，获取导出的数据
             data[dir] = require(indexPath).default
         }
     })
@@ -59,7 +62,7 @@ const buildI18n = () => {
 }
 
 program
-    .command('i18n') // 创建i18n命令
+    .command('i18n') // 添加i18n命令
     .action(buildI18n)
 
 program.parse(process.argv);

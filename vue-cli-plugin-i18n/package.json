@@ -1,5 +1,5 @@
 {
-  "name": "vue-cli-plugin-i18n",
+  "name": "@wanglin1994/vue-cli-plugin-i18n",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
