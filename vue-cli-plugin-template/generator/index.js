@@ -12,7 +12,7 @@ module.exports = (api) => {
             "mockjs": "^1.1.0",
             "sass": "^1.49.7",
             "sass-loader": "^8.0.2",
-            "hello-tool": "^1.0.0"
+            "@wanglin1994/hello-tool": "^1.0.1"
         }
     })
 

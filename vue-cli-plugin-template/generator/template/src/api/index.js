@@ -1,5 +1,5 @@
 import http from './httpInstance'
-import './_mock'
+import './mock'
 
 export default {
     test() {
