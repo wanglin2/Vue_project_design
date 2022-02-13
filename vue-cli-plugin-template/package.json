@@ -1,5 +1,5 @@
 {
-  "name": "vue-cli-plugin-template",
+  "name": "@wanglin1994/vue-cli-plugin-template",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
