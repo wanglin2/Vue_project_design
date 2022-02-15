@@ -1,7 +1,7 @@
 {
     "plugins": {
         "@wanglin1994/vue-cli-plugin-template": {
-            "version": "^1.0.4"
+            "version": "^1.0.6"
         },
         "@wanglin1994/vue-cli-plugin-i18n": {
             "version": "^1.0.13"
